@@ -1,5 +1,5 @@
 local NotifyLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKhonshu/intro/main/ui"))()
- NotifyLib.prompt('used by stars', 'loading...', 2)
+ NotifyLib.prompt('🌟', 'loaded', 2)
 local Aiming = loadstring(game:HttpGet("https://gist.githubusercontent.com/diegxw/d870997929af2a1483180013f688c771/raw/ebd11cce0600c1a140f411f7e1b9e8d4a7320037/module"))()
 Aiming.TeamCheck(false)
 
@@ -16,28 +16,24 @@ local DaHoodSettings = {
     SilentAim = true,
     AimLock = false,
     Prediction = 0.14,
-    AimLockKeybind = "v"
+    AimLockKeybind = Enum.KeyCode.V
 }
 
     UserInputService.InputBegan:Connect(function(keygo,ok)
            if (not ok) then
            if (keygo.KeyCode == DaHoodSettings.AimLockKeybind) then
-               if DaHoodSettings.SilentAim == true then
+               if Aiming.Enabled == true then
                Locking = not Locking
                
                if Locking then
-    			game.StarterGui:SetCore("SendNotification", {
-        NotifyLib.prompt('used by stars', 'enabled', 2)
-    })
-    end
-    elseif not Locking then
-                   NotifyLib.prompt('used by stars', 'disabled', 2)  
+        NotifyLib.prompt('🌟', 'enabled', 2)
+    else if not Locking then
+                   NotifyLib.prompt('🌟', 'disabled', 2)  
                
                end
                   
  
  end     end
-end)
 
 getgenv().DaHoodSettings = DaHoodSettings
 
@@ -81,5 +77,6 @@ RunService:BindToRenderStep("AimLock", 0, function()
         CurrentCamera.CFrame = CFrame.lookAt(CurrentCamera.CFrame.Position, Hit.Position)
     end
     end)
-
- NotifyLib.prompt('used by stars', 'loaded', 2)
+    end
+end
+end)
