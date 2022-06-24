@@ -22,7 +22,7 @@ local DaHoodSettings = {
     UserInputService.InputBegan:Connect(function(keygo,ok)
            if (not ok) then
            if (keygo.KeyCode == DaHoodSettings.AimLockKeybind) then
-               if Aiming.Enabled == true then
+               if DaHoodSettings.SilentAim == true then
                Locking = not Locking
                
                if Locking then
