@@ -19,10 +19,12 @@ local DaHoodSettings = {
     AimLockKeybind = Enum.KeyCode.V
 }
 
+getgenv().DaHoodSettings = DaHoodSettings
+
     UserInputService.InputBegan:Connect(function(keygo,ok)
            if (not ok) then
            if (keygo.KeyCode == DaHoodSettings.AimLockKeybind) then
-               if DaHoodSettings.SilentAim == true then
+               if getgenv().Aiming.Enabled == true then
                Locking = not Locking
                
                if Locking then
@@ -34,8 +36,6 @@ local DaHoodSettings = {
                   
  
  end     end
-
-getgenv().DaHoodSettings = DaHoodSettings
 
 function Aiming.Check()
     if not (Aiming.Enabled == true and Aiming.Selected ~= LocalPlayer and Aiming.SelectedPart ~= nil) then
